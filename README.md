@@ -12,5 +12,5 @@ Application PHP en ligne de commande qui gère le stock d'un magasin
 - **C - Commande** : constructeur(numero), ajouterLigne, total, valider, estValidee, afficher + index.php
 
 ## Équipe
-## Équipe
 - Amina Zekri : classe Produit (A)
+- Hiba Fakir : classe Stock (B)
