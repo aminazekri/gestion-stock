@@ -12,3 +12,4 @@ Application PHP en ligne de commande qui gère le stock d'un magasin
 - **C - Commande** : constructeur(numero), ajouterLigne, total, valider, estValidee, afficher + index.php
 
 ## Équipe
+- Hiba Fakir : classe Stock (B) 
