@@ -49,4 +49,17 @@ class Commande
     {
         return $this->validee;
     }
+    
+    public function afficher(): string
+    {
+        $texte = "=== Facture - Commande n°{$this->numero} ===\n";
+        foreach ($this->lignes as $l) {
+            $p = $l['produit'];
+            $texte .= sprintf("%-8s %-20s %3d x %8.2f = %9.2f\n",
+                $p->getReference(), $p->getNom(), $l['quantite'], $p->getPrix(), $p->getPrix() * $l['quantite']);
+        }
+        $texte .= sprintf("TOTAL : %.2f DH\n", $this->total());
+        $texte .= "Statut : " . ($this->validee ? "validée" : "en attente") . "\n";
+        return $texte;
+    }
 }
