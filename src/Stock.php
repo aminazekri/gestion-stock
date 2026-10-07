@@ -34,7 +34,7 @@ class Stock
     {
         $somme = 0.0;
         foreach ($this->produits as $p) {
-            $somme += $p->getPrix();
+            $somme += $p->valeurStock();
         }
         return $somme;
     }
