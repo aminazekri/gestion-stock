@@ -21,4 +21,32 @@ class Commande
         }
         $this->lignes[] = ['produit' => $p, 'quantite' => $quantite];
     }
+    
+    public function total(): float
+    {
+        $total = 0.0;
+        foreach ($this->lignes as $l) {
+            $total += $l['produit']->getPrix() * $l['quantite'];
+        }
+        return $total;
+    }
+
+    public function valider(): void
+    {
+        if ($this->validee) {
+            throw new Exception("La commande n°{$this->numero} est déjà validée.");
+        }
+        if (empty($this->lignes)) {
+            throw new Exception("Impossible de valider une commande vide.");
+        }
+        foreach ($this->lignes as $l) {
+            $l['produit']->retirerQuantite($l['quantite']);
+        }
+        $this->validee = true;
+    }
+
+    public function estValidee(): bool
+    {
+        return $this->validee;
+    }
 }
