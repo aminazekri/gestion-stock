@@ -29,4 +29,29 @@ class Stock
     {
         return count($this->produits);
     }
+
+    public function valeurTotale(): float
+    {
+        $somme = 0.0;
+        foreach ($this->produits as $p) {
+            $somme += $p->valeurStock();
+        }
+        return $somme;
+    }
+
+    public function produitsEnRupture(): array
+    {
+        return array_values(array_filter(
+            $this->produits,
+            fn(Produit $p) => $p->getQuantite() === 0
+        ));
+    }
+
+    public function produitsSousSeuil(int $seuil): array
+    {
+        return array_values(array_filter(
+            $this->produits,
+            fn(Produit $p) => $p->getQuantite() < $seuil
+        ));
+    }
 }
