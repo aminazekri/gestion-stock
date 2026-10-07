@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Un produit du magasin : référence, nom, prix unitaire et quantité en stock.
+ */
 class Produit
 {
     private string $reference;
